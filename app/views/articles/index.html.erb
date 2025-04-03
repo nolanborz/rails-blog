@@ -1,4 +1,3 @@
-<div>
-  <h1 class="font-bold text-4xl">Articles#index</h1>
-  <p>Find me in app/views/articles/index.html.erb</p>
-</div>
+<% @articles.each do |article| %>
+  <h2><%= article.title %></h2>
+<% end %>
