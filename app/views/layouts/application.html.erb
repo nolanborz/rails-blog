@@ -17,10 +17,17 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+  <header>
+    <%= render 'shared/navbar' %>
+  </header>
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
   </body>
+
+  <footer>
+    <%= render 'shared/footer' %>
+  </footer>
 </html>

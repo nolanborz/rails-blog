@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+#
+Article.destroy_all
+
+10.times do |i|
+  Article.create!(
+    title: "Article #{i + 1}: #{Faker::Lorem.sentence(word_count: 3, random_words_to_add: 2)}",
+    body: Faker::Lorem.paragraph_by_chars(number: 1500, supplemental: true),
+    published: [ true, false ].sample # Randomly set articles as published or not
+  )
+end
+
+puts "Created #{Article.count} articles"
