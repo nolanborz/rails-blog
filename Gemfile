@@ -58,3 +58,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "redcarpet"
+gem "sanitize"
+gem "image_processing"
+gem "mini_magick"

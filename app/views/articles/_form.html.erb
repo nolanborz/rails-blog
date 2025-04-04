@@ -1,0 +1,61 @@
+<%= form_with(model: article, class: "max-w-3xl mx-auto my-8 p-8 bg-white rounded-lg shadow-md", data: { controller: "editor" }) do |form| %>
+  <% if article.errors.any? %>
+    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+      <h2 class="text-red-700 text-lg font-medium">
+        <%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:
+      </h2>
+      <ul class="mt-2 ml-5 list-disc text-red-600">
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-6">
+    <%= form.label :title, class: "block mb-2 font-semibold text-gray-700" %>
+    <%= form.text_field :title, class: "w-full px-3 py-3 text-xl font-semibold border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500", placeholder: "Enter a compelling title..." %>
+  </div>
+
+  <div class="mb-6">
+    <div class="flex flex-wrap items-center p-2 mb-2 bg-gray-100 border border-gray-300 rounded-md" >
+      <button type="button" id="bold-btn" title="Bold" class="p-2 mr-1 text-gray-600 rounded-md hover:bg-gray-200" data-action="click->editor#boldText">
+        <i class="fas fa-bold"></i>
+      </button>
+      <button type="button" id="italic-btn" title="Italic" class="p-2 mr-1 text-gray-600 rounded-md hover:bg-gray-200" data-action="click->editor#italicText">
+        <i class="fas fa-italic"></i>
+      </button>
+      <button type="button" id="heading-btn" title="Heading" class="p-2 mr-1 text-gray-600 rounded-md hover:bg-gray-200" data-action="click->editor#headingText">
+        <i class="fas fa-heading"></i>
+      </button>
+      <button type="button" id="quote-btn" title="Quote" class="p-2 mr-1 text-gray-600 rounded-md hover:bg-gray-200" data-action="click->editor#quoteText">
+        <i class="fas fa-quote-right"></i>
+      </button>
+      <button type="button" id="list-btn" title="List" class="p-2 mr-1 text-gray-600 rounded-md hover:bg-gray-200" data-action="click->editor#listText">
+        <i class="fas fa-list-ul"></i>
+      </button>
+      <button type="button" id="link-btn" title="Link" class="p-2 mr-1 text-gray-600 rounded-md hover:bg-gray-200" data-action="click->editor#linkText">
+        <i class="fas fa-link"></i>
+      </button>
+      <label for="image-upload" class="p-2 mr-1 text-gray-600 rounded-md hover:bg-gray-200 cursor-pointer">
+        <i class="fas fa-image"></i>
+        <%= form.file_field :images, multiple: true, class: "sr-only", id: "image-upload", accept: "image/*" %>
+      </label>
+    </div>
+    
+    <%= form.label :body, class: "block mb-2 font-semibold text-gray-700" %>
+    <%= form.text_area :body, class: "w-full px-3 py-3 border border-gray-300 rounded-md font-mono leading-relaxed min-h-[300px] focus:outline-none focus:ring-2 focus:ring-blue-500", rows: 15, placeholder: "Start writing your amazing article...", data: { editor_target: "editor" } %>
+  </div>
+
+  <div id="image-preview" class="flex flex-wrap gap-4 mb-6" data-editor-target="imagePreview"></div>
+
+  <div class="flex items-center mb-6">
+    <%= form.check_box :published, class: "w-4 h-4 mr-2 text-blue-600 border-gray-300 rounded focus:ring-blue-500" %>
+    <%= form.label :published, "Publish this article", class: "text-gray-700" %>
+  </div>
+
+  <div class="flex gap-4 mt-8 border-t border-gray-200 pt-6">
+    <%= form.submit "Save Article", class: "px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
+    <%= link_to "Cancel", articles_path, class: "px-6 py-3 bg-gray-200 text-gray-700 font-semibold rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2" %>
+  </div>
+<% end %>
