@@ -5,4 +5,7 @@ class Article < ApplicationRecord
 
   scope :published, -> { where(published: true) }
   scope :recent, -> { order(created_at: :desc) }
+
+  scope :oldest, -> { order(created_at: :asc) }
+  scope :newest, -> { order(created_at: :desc) }
 end

@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   def index
     @articles = Article.all
+
+    @articles = params[:sort] == "oldest" ? @articles.oldest : @articles.newest
   end
 
   def show

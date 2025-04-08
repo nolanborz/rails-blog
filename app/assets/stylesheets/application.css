@@ -13,10 +13,6 @@
  *= require_tree .
  *= require_self
  */
-img {
-  height: 80px;
-  width: 80px;
-}
 <style>
   /* Typography styles for a Medium-like reading experience with subtle neo-brutalist accents */
   .prose {
