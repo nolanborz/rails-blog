@@ -39,9 +39,10 @@
         <%= form.file_field :images, multiple: true, class: "sr-only", id: "image-upload", accept: "image/*" %>
       </label>
     </div>
-    
-    <%= form.label :body, class: "block mb-3 font-semibold text-gray-700 text-lg text-center" %>
-    <%= form.text_area :body, class: "w-full px-6 py-4 border-2 border-black font-serif text-lg leading-relaxed min-h-[500px] focus:outline-none", rows: 20, placeholder: "Start writing your amazing article...", data: { editor_target: "editor" } %>
+    <div>
+      <%= form.label :body %>
+      <%= form.rich_text_area :body %>
+    </div>
   </div>
 
   <div id="image-preview" class="flex flex-wrap justify-center gap-4 mb-8" data-editor-target="imagePreview"></div>
