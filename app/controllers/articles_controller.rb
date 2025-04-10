@@ -3,6 +3,12 @@ class ArticlesController < ApplicationController
     @articles = Article.all
 
     @articles = params[:sort] == "oldest" ? @articles.oldest : @articles.newest
+
+    if params[:status] == "draft" && admin_logged_in?
+      @articles = @articles.where(published: false)
+    else
+      @articles = @articles.where(published: true)
+    end
   end
 
   def show
