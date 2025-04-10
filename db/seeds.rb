@@ -19,3 +19,5 @@ Article.destroy_all
 end
 
 puts "Created #{Article.count} articles"
+
+Admin.create!(email: '')

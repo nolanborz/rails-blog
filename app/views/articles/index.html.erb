@@ -49,10 +49,6 @@
                 <span><%= article.created_at.strftime("%B %d, %Y") %></span>
               </div>
               <div class="flex items-center">
-                <span class="mr-2">≡</span>
-                <span><%= pluralize(article.body.split.size, 'word') rescue '0 words' %></span>
-              </div>
-              <div class="flex items-center">
                 <span class="mr-2">→</span>
                 <span>View article</span>
               </div>
@@ -98,5 +94,8 @@
         + Create Your First Article
       <% end %>
     </div>
+  <% end %>
+  <% if admin_logged_in? %>
+    <p>Hello I'm an admin</p>
   <% end %>
 </div>

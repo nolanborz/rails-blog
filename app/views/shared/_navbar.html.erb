@@ -25,6 +25,9 @@
           ARTICLES
         </div>
       <% end %>
+      <% if admin_logged_in? %>
+        <%= button_to "Logout", logout_path, method: :delete, data: { turbo_method: :delete } %>
+      <% end %>
     </ul>
   </div>
 </div>
