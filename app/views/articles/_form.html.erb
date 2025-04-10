@@ -1,4 +1,4 @@
-<%= form_with(model: article, class: "max-w-5xl mx-auto my-12 p-8 bg-white border-2 border-black", data: { controller: "editor" }) do |form| %>
+<%= form_with(model: article, class: "max-w-5xl mx-auto my-12 p-8 bg-white border-2 border-black", data: { controller: "editor", turbo: false }) do |form| %>
   <% if article.errors.any? %>
     <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8">
       <h2 class="text-red-700 text-lg font-medium">
@@ -14,36 +14,14 @@
 
   <div class="mb-8 text-center">
     <%= form.label :title, class: "block mb-3 font-semibold text-gray-700 text-lg" %>
-    <%= form.text_field :title, class: "w-full px-4 py-3 text-2xl font-semibold border-2 border-black text-center focus:outline-none", placeholder: "Enter a compelling title..." %>
+    <%= form.text_field :title, class: "w-full px-4 py-3 text-2xl font-semibold border-2 border-black text-center focus:outline-none", placeholder: "Title Goes Here" %>
   </div>
 
-  <div class="mb-8">
-    <div class="flex flex-wrap items-center justify-center p-3 mb-3 bg-white border-2 border-black" >
-      <button type="button" id="bold-btn" title="Bold" class="p-2 mx-1 text-gray-800 hover:bg-gray-100" data-action="click->editor#boldText">
-        <i class="fas fa-bold"></i>
-      </button>
-      <button type="button" id="italic-btn" title="Italic" class="p-2 mx-1 text-gray-800 hover:bg-gray-100" data-action="click->editor#italicText">
-        <i class="fas fa-italic"></i>
-      </button>
-      <button type="button" id="heading-btn" title="Heading" class="p-2 mx-1 text-gray-800 hover:bg-gray-100" data-action="click->editor#headingText">
-        <i class="fas fa-heading"></i>
-      </button>
-      <button type="button" id="list-btn" title="List" class="p-2 mx-1 text-gray-800 hover:bg-gray-100" data-action="click->editor#listText">
-        <i class="fas fa-list-ul"></i>
-      </button>
-      <button type="button" id="link-btn" title="Link" class="p-2 mx-1 text-gray-800 hover:bg-gray-100" data-action="click->editor#linkText">
-        <i class="fas fa-link"></i>
-      </button>
-      <label for="image-upload" class="p-2 mx-1 text-gray-800 hover:bg-gray-100 cursor-pointer">
-        <i class="fas fa-image"></i>
-        <%= form.file_field :images, multiple: true, class: "sr-only", id: "image-upload", accept: "image/*" %>
-      </label>
-    </div>
-    <div>
-      <%= form.label :body %>
-      <%= form.rich_text_area :body %>
-    </div>
+  <div>
+    <%= form.label :body %>
+    <%= form.rich_text_area :body %>
   </div>
+  
 
   <div id="image-preview" class="flex flex-wrap justify-center gap-4 mb-8" data-editor-target="imagePreview"></div>
 

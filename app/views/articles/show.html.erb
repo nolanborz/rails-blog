@@ -30,7 +30,7 @@
   </header>
 
     <div class="prose prose-lg md:prose-xl max-w-none mx-auto text-gray-800">
-      <%= markdown(@article.body) %>
+      <%= @article.body %>
     </div>
     
     <% if @article.images.attached? && @article.images.size > 0 %>
