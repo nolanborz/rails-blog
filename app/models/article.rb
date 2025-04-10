@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
   has_many_attached :images
+  has_rich_text :body
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 10 }
 
