@@ -18,7 +18,12 @@
   </div>
 
   <div>
-    <%= form.label :body %>
+    <%= form.label :tags, class: "block mb-3 font-semibold text-gray-700 text-lg" %>
+    <%= form.text_field :tags, class: "px-4 py-3 text-lg border-2 border-black text-center focus:outline-none", placeholder: "Opinion? Tech? Review?" %>
+  </div>
+
+  <div>
+    <%= form.label :body, class: "block mb-3 font-semibold text-gray-700 text-lg" %>
     <%= form.rich_text_area :body %>
   </div>
   
