@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :articles
   resources :about
   resources :work
-  root "home#index"
+  root "about#index"
 end
