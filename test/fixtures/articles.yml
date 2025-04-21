@@ -1,0 +1,15 @@
+one:
+  title: "Sample Article"
+  body: "This is a sample article body."
+  published: true
+  tags: "sample, test"
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+two:
+  title: "Another Article"
+  body: "This is another article body."
+  published: false
+  tags: "draft, test"
+  created_at: <%= 2.days.ago %>
+  updated_at: <%= 2.days.ago %>
